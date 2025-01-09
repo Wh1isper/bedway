@@ -9,6 +9,14 @@
 
 Self-host and maintained [bedrock-access-gateway](https://github.com/aws-samples/bedrock-access-gateway), which is under [MIT No Attribution License](https://github.com/aws-samples/bedrock-access-gateway/blob/093c6fa586be04964820baaf1e3dca431f1fe823/LICENSE)
 
+Why this project:
+
+- No AWS infrastructure needed
+- Improved performance
+- More features
+- Easy to deploy
+- Quick response to community requests
+
 ## Install
 
 `pip install bedway`
@@ -37,13 +45,15 @@ pip install pre-commit
 pre-commit install
 ```
 
+### Unittest
+
 Install package locally
 
 ```
 pip install -e .[test]
 ```
 
-Run unit-test before PR, **ensure that new features are covered by unit tests**
+TODO: Write some test..
 
 ```
 pytest -v

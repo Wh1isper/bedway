@@ -27,7 +27,13 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-asyncio", "pytest-cov", "dirty-equals"]
+test = [
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "dirty-equals",
+    "boto3-stubs[bedrock,bedrock-runtime]",
+]
 docs = ["Sphinx", "pydata-sphinx-theme", "sphinx-click", "autodoc_pydantic"]
 
 [project.scripts]
