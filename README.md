@@ -21,7 +21,7 @@ Or use docker image
 
 ```bash
 docker run --name bedway \
--p 8000:8000 \
+-p 9128:9128 \
 -e "AWS_ACCESS_KEY_ID=<access_key_id>" \
 -e "AWS_SECRET_ACCESS_KEY=<secret_access_key>" \
 -e "API_KEY=<api_key_for_this_service>" \
