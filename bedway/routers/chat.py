@@ -1,6 +1,7 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Body, Depends
+from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import StreamingResponse
 
 from bedway.auth import api_key_auth
@@ -46,4 +47,4 @@ async def chat_completions(
         return StreamingResponse(
             content=model.chat_stream(chat_request), media_type="text/event-stream"
         )
-    return model.chat(chat_request)
+    return await run_in_threadpool(model.chat, chat_request)

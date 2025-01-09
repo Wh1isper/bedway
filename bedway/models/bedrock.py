@@ -12,6 +12,7 @@ import requests
 import tiktoken
 from botocore.config import Config
 from fastapi import HTTPException
+from fastapi.concurrency import run_in_threadpool
 
 from bedway.models.base import BaseChatModel, BaseEmbeddingsModel
 from bedway.schema import (  # Chat; Embeddings
@@ -134,10 +135,11 @@ bedrock_model_list = list_bedrock_models()
 
 class BedrockModel(BaseChatModel):
 
-    def list_models(self) -> list[str]:
+    async def list_models(self) -> list[str]:
         """Always refresh the latest model list"""
         global bedrock_model_list
-        bedrock_model_list = list_bedrock_models()
+
+        bedrock_model_list = await run_in_threadpool(list_bedrock_models)
         return list(bedrock_model_list.keys())
 
     def validate(self, chat_request: ChatRequest):

@@ -1,6 +1,7 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Path
+from fastapi.concurrency import run_in_threadpool
 
 from bedway.auth import api_key_auth
 from bedway.models.bedrock import BedrockModel
@@ -16,13 +17,13 @@ chat_model = BedrockModel()
 
 
 async def validate_model_id(model_id: str):
-    if model_id not in chat_model.list_models():
+    if model_id not in await chat_model.list_models():
         raise HTTPException(status_code=500, detail="Unsupported Model Id")
 
 
 @router.get("", response_model=Models)
 async def list_models():
-    model_list = [Model(id=model_id) for model_id in chat_model.list_models()]
+    model_list = [Model(id=model_id) for model_id in await chat_model.list_models()]
     return Models(data=model_list)
 
 
