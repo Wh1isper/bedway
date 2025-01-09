@@ -3,7 +3,7 @@ from typing import Annotated
 
 import boto3
 from fastapi import Depends, HTTPException, status
-from fastbedway.security import HTTPAuthorizationCredentials, HTTPBearer
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from bedway.setting import DEFAULT_API_KEYS
 

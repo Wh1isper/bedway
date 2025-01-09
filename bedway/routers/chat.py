@@ -1,7 +1,7 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Body, Depends
-from fastbedway.responses import StreamingResponse
+from fastapi.responses import StreamingResponse
 
 from bedway.auth import api_key_auth
 from bedway.models.bedrock import BedrockModel

@@ -2,9 +2,9 @@ import logging
 
 import uvicorn
 from fastapi import FastAPI
-from fastbedway.exceptions import RequestValidationError
-from fastbedway.middleware.cors import CORSMiddleware
-from fastbedway.responses import PlainTextResponse
+from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import PlainTextResponse
 
 from bedway.routers import chat, embeddings, model
 from bedway.setting import API_ROUTE_PREFIX, DESCRIPTION, SUMMARY, TITLE, VERSION

@@ -19,7 +19,14 @@ Or use docker image
 
 ## Usage
 
-TBD
+```bash
+docker run --name bedway \
+-p 8000:8000 \
+-e "AWS_ACCESS_KEY_ID=<access_key_id>" \
+-e "AWS_SECRET_ACCESS_KEY=<secret_access_key>" \
+-e "API_KEY=<api_key_for_this_service>" \
+wh1isper/bedway
+```
 
 ## Develop
 
