@@ -8,6 +8,7 @@ description = "bedway"
 keywords = ["bedway"]
 requires-python = ">=3.10"
 dependencies = [
+    "loguru",
     "fastapi",
     "pydantic",
     "uvicorn[standard]",

@@ -14,6 +14,7 @@ from botocore.config import Config
 from fastapi import HTTPException
 from fastapi.concurrency import run_in_threadpool
 
+from bedway.log import logger
 from bedway.models.base import BaseChatModel, BaseEmbeddingsModel
 from bedway.schema import (  # Chat; Embeddings
     AssistantMessage,
@@ -42,8 +43,6 @@ from bedway.setting import (
     DEFAULT_MODEL,
     ENABLE_CROSS_REGION_INFERENCE,
 )
-
-logger = logging.getLogger(__name__)
 
 config = Config(connect_timeout=60, read_timeout=120, retries={"max_attempts": 1})
 

@@ -5,6 +5,7 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import StreamingResponse
 
 from bedway.auth import api_key_auth
+from bedway.log import logger
 from bedway.models.bedrock import BedrockModel
 from bedway.schema import ChatRequest, ChatResponse, ChatStreamResponse
 from bedway.setting import DEFAULT_MODEL
@@ -43,6 +44,7 @@ async def chat_completions(
     # Exception will be raised if model not supported.
     model = BedrockModel()
     model.validate(chat_request)
+    logger.debug(f"Chat request: {chat_request}")
     if chat_request.stream:
         return StreamingResponse(
             content=model.chat_stream(chat_request), media_type="text/event-stream"
