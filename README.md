@@ -12,14 +12,14 @@ Self-host and maintained [bedrock-access-gateway](https://github.com/aws-samples
 Why this project:
 
 - No AWS infrastructure needed
-- Improved performance
-- More features
+- Improved performance: https://github.com/aws-samples/bedrock-access-gateway/issues/22
+- Bug fix and new features: https://github.com/aws-samples/bedrock-access-gateway/issues/92, https://github.com/aws-samples/bedrock-access-gateway/issues/88
 - Easy to deploy
 - Quick response to community requests
 
 ## Install
 
-`pip install bedway`
+`pip install bedway` then `bedway serve`
 
 Or use docker image
 
@@ -32,9 +32,13 @@ docker run --name bedway \
 -p 9128:9128 \
 -e "AWS_ACCESS_KEY_ID=<access_key_id>" \
 -e "AWS_SECRET_ACCESS_KEY=<secret_access_key>" \
+-e "AWS_REGION=<aws_region>" \
+-e "DEFAULT_MODEL_NAME=<default_model_name>" \
 -e "API_KEY=<api_key_for_this_service>" \
 wh1isper/bedway
 ```
+
+See more settings in [setting.py](./bedway/setting.py)
 
 ## Develop
 
