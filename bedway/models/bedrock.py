@@ -132,6 +132,10 @@ def list_bedrock_models() -> dict:
 bedrock_model_list = list_bedrock_models()
 
 
+def is_model_support_tool_choice(model_id: str) -> bool:
+    return model_id.startswith("anthropic")
+
+
 class BedrockModel(BaseChatModel):
 
     async def list_models(self) -> list[str]:
@@ -410,7 +414,7 @@ class BedrockModel(BaseChatModel):
                 "tools": [self._convert_tool_spec(t.function) for t in chat_request.tools]
             }
 
-            if chat_request.tool_choice and not chat_request.model.startswith("meta.llama3-1-"):
+            if chat_request.tool_choice and is_model_support_tool_choice(chat_request.model):
                 if isinstance(chat_request.tool_choice, str):
                     # auto (default) is mapped to {"auto" : {}}
                     # required is mapped to {"any" : {}}
