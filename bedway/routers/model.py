@@ -35,7 +35,7 @@ async def get_model(
     model_id: Annotated[
         str,
         Path(description="Model ID", example="anthropic.claude-3-sonnet-20240229-v1:0"),
-    ]
+    ],
 ):
     await validate_model_id(model_id)
     return Model(id=model_id)
