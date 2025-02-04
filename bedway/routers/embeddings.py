@@ -26,7 +26,7 @@ async def embeddings(
                 }
             ],
         ),
-    ]
+    ],
 ):
     if embeddings_request.model.lower().startswith("text-embedding-"):
         embeddings_request.model = DEFAULT_EMBEDDING_MODEL
