@@ -3,7 +3,7 @@ import uuid
 from abc import ABC, abstractmethod
 from typing import AsyncIterable
 
-from bedway.api.schema import (  # Chat; Embeddings
+from bedway.schema import (  # Chat; Embeddings
     ChatRequest,
     ChatResponse,
     ChatStreamResponse,
